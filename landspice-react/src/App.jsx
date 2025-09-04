@@ -9,18 +9,20 @@ import { ScrollToTop } from './components/ScrollToTop.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 
-// Initialize Firebase Analytics
-const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
-
 // Track page views
 const TrackPageViews = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && analytics) {
-      logEvent(analytics, 'page_view', {
-        page_path: location.pathname + location.search,
-      });
+    if (typeof window !== 'undefined') {
+      try {
+        const analytics = getAnalytics(app);
+        logEvent(analytics, 'page_view', {
+          page_path: location.pathname + location.search,
+        });
+      } catch (error) {
+        console.error("Firebase Analytics error:", error);
+      }
     }
   }, [location]);
 
