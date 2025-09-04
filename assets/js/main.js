@@ -144,6 +144,9 @@
       'section.products.title': 'منتجاتنا',
       'section.products.sub': 'من الأرض اليمنية إلى مائدتكم.',
 
+      'section.gallery.title': 'معرض المنتجات',
+      'section.gallery.sub': 'لقطات عالية الجودة تبرز تفاصيل منتجاتنا.',
+
       'product1.title': 'شطة لاند سبايس الحارة',
       'product1.desc': 'شطة يمنية بمذاق حار متوازن ونكهة أصيلة.',
       'product2.title': 'كاتشب لاند سبايس',
@@ -200,11 +203,15 @@
       'aria.whatsapp': 'واتساب',
       'aria.theme': 'تبديل الثيم',
       'aria.lang': 'تغيير اللغة',
-      'aria.navigation': 'التنقل الرئيسي'
+      'aria.navigation': 'التنقل الرئيسي',
+      'aria.close': 'إغلاق',
+      'aria.prev': 'السابق',
+      'aria.next': 'التالي'
     },
     en: {
       'skip.to_content': 'Skip to content',
       'nav.products': 'Products',
+      'nav.gallery': 'Gallery',
       'nav.quality': 'Quality',
       'nav.partners': 'Partners',
       'nav.about': 'About',
@@ -222,6 +229,9 @@
 
       'section.products.title': 'Our Products',
       'section.products.sub': 'From Yemeni land to your table.',
+
+      'section.gallery.title': 'Product Gallery',
+      'section.gallery.sub': 'High-quality shots highlighting product details.',
 
       'product1.title': 'LandSpices Hot Chili Sauce',
       'product1.desc': 'Balanced heat with an authentic Yemeni taste.',
@@ -279,7 +289,10 @@
       'aria.whatsapp': 'WhatsApp',
       'aria.theme': 'Switch theme',
       'aria.lang': 'Change language',
-      'aria.navigation': 'Main navigation'
+      'aria.navigation': 'Main navigation',
+      'aria.close': 'Close',
+      'aria.prev': 'Previous',
+      'aria.next': 'Next'
     }
   };
 
@@ -318,6 +331,15 @@
         panel.setAttribute('aria-label', t('faq.answer'));
       }
     });
+    // Gallery slider controls and region label (if initialized)
+    const slider = document.querySelector('.gallery__slider');
+    if (slider) {
+      slider.setAttribute('aria-label', t('section.gallery.title'));
+      const prevBtn = slider.querySelector('.slider__btn.prev');
+      const nextBtn = slider.querySelector('.slider__btn.next');
+      if (prevBtn) prevBtn.setAttribute('aria-label', t('aria.prev'));
+      if (nextBtn) nextBtn.setAttribute('aria-label', t('aria.next'));
+    }
   }
 
   function updateLangToggleUI() {
@@ -712,6 +734,119 @@
   }
   window.addEventListener('scroll', parallax, { passive: true });
   parallax();
+
+  // Gallery Slider (auto-playing, accessible, RTL-aware)
+  const galleryItems = Array.from(document.querySelectorAll('.gallery__item'));
+  if (galleryItems.length) {
+    const grid = document.querySelector('.gallery__grid');
+    // Build slider container above the grid to keep current grid design intact
+    const slider = document.createElement('div');
+    slider.className = 'gallery__slider reveal';
+    slider.setAttribute('role', 'region');
+    slider.setAttribute('aria-roledescription', 'carousel');
+    slider.setAttribute('aria-label', t('section.gallery.title'));
+    slider.setAttribute('tabindex', '0');
+
+    const slidesWrap = document.createElement('div');
+    slidesWrap.className = 'gallery__slides';
+
+    // Controls
+    const btnPrev = document.createElement('button');
+    btnPrev.type = 'button';
+    btnPrev.className = 'slider__btn prev';
+    btnPrev.setAttribute('aria-label', t('aria.prev'));
+    btnPrev.textContent = '‹';
+    const btnNext = document.createElement('button');
+    btnNext.type = 'button';
+    btnNext.className = 'slider__btn next';
+    btnNext.setAttribute('aria-label', t('aria.next'));
+    btnNext.textContent = '›';
+
+    slider.append(slidesWrap, btnPrev, btnNext);
+    if (grid && grid.parentNode) {
+      grid.parentNode.insertBefore(slider, grid);
+    }
+
+    // Collect image sources from existing gallery items
+    const sources = galleryItems.map((a) => a.getAttribute('data-full') || a.getAttribute('href'))
+      .filter(Boolean);
+    // Make original anchors non-interactive to avoid navigating to image files
+    galleryItems.forEach((a) => {
+      a.addEventListener('click', (e) => e.preventDefault());
+      a.setAttribute('tabindex', '-1');
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('role', 'presentation');
+    });
+
+    // Create slides
+    const slides = sources.map((src, i) => {
+      const s = document.createElement('div');
+      s.className = 'gallery__slide';
+      s.style.setProperty('--img', `url('${src}')`);
+      s.setAttribute('aria-hidden', 'true');
+      slidesWrap.appendChild(s);
+      return s;
+    });
+
+    // State
+    let index = 0;
+    let timer = null;
+
+    function isRTL() {
+      return (root.getAttribute('dir') || document.dir || 'rtl') === 'rtl';
+    }
+
+    function show(i) {
+      if (!slides.length) return;
+      const total = slides.length;
+      index = ((i % total) + total) % total; // safe modulo
+      slides.forEach((el, n) => {
+        const active = n === index;
+        el.classList.toggle('active', active);
+        el.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+    }
+
+    function next() { show(index + 1); }
+    function prev() { show(index - 1); }
+
+    function startAuto() {
+      if (timer || slides.length < 2) return;
+      timer = setInterval(() => { isRTL() ? prev() : next(); }, 3500);
+    }
+    function stopAuto() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    // Events
+    btnNext.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+    btnPrev.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+    // Keyboard navigation when slider is focused
+    slider.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); isRTL() ? prev() : next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); isRTL() ? next() : prev(); }
+    });
+
+    // Pause on hover/focus for better UX
+    slider.addEventListener('mouseenter', stopAuto);
+    slider.addEventListener('mouseleave', startAuto);
+    slider.addEventListener('focusin', stopAuto);
+    slider.addEventListener('focusout', startAuto);
+
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAuto(); else startAuto();
+    });
+
+    // Init
+    show(0);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) startAuto();
+
+    // Keep labels in sync when language changes later
+    applyAriaLabels();
+  }
 
   // Tilt effect for cards
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

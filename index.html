@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" class="no-js">
+<html lang="ar" dir="rtl" >
 <head>
   <meta charset="utf-8" />
   <title>لاند سبايس | LandSpice – الجودة اليمنية بطعم عالمي</title>
@@ -71,6 +71,7 @@
         </button>
         <ul class="nav__menu" id="navMenu" aria-hidden="true">
           <li><a href="#products" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">المعرض</a></li>
           <li><a href="#quality" data-i18n="nav.quality">الجودة</a></li>
           <li><a href="#partners" data-i18n="nav.partners">الشركاء</a></li>
           <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
@@ -183,6 +184,35 @@
               <a class="btn btn--primary btn--shine btn--order" href="#contact" data-i18n="nav.cta_contact">اطلب الآن</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <header class="section__header reveal" style="--d:.02s">
+          <h2 data-i18n="section.gallery.title">معرض المنتجات</h2>
+          <p data-i18n="section.gallery.sub">لقطات عالية الجودة تبرز تفاصيل منتجاتنا.</p>
+        </header>
+  
+        <div class="gallery__grid">
+          <a href="assets/img/Product/pasbas.jpg" class="gallery__item reveal tall" style="--d:.11s" data-full="assets/img/Product/pasbas.jpg" aria-label="عرض الصورة">
+            <div class="gallery__thumb" style="--img:url('assets/img/Product/pasbas.jpg')"><span class="zoom">🔎</span></div>
+          </a>
+
+          <a href="assets/img/Product/hotSauce10.jpg" class="gallery__item reveal tall" style="--d:.13s" data-full="assets/img/Product/hotSauce10.jpg" aria-label="عرض الصورة">
+            <div class="gallery__thumb" style="--img:url('assets/img/Product/hotSauce10.jpg')"><span class="zoom">🔎</span></div>
+          </a>
+          <a href="assets/img/Product/hotSauce.jpg" class="gallery__item reveal tall" style="--d:.07s" data-full="assets/img/Product/hotSauce.jpg" aria-label="عرض الصورة">
+            <div class="gallery__thumb" style="--img:url('assets/img/Product/hotSauce.jpg')"><span class="zoom">🔎</span></div>
+          </a>
+          <a href="assets/img/Product/TomatoPowder.jpg" class="gallery__item reveal wide" style="--d:.09s" data-full="assets/img/Product/TomatoPowder.jpg" aria-label="عرض الصورة">
+            <div class="gallery__thumb" style="--img:url('assets/img/Product/TomatoPowder.jpg')"><span class="zoom">🔎</span></div>
+          </a>
+          <a href="assets/img/Product/BigHotSauce.jpg" class="gallery__item reveal wide" style="--d:.15s" data-full="assets/img/Product/BigHotSauce.jpg" aria-label="عرض الصورة">
+            <div class="gallery__thumb" style="--img:url('assets/img/Product/BigHotSauce.jpg')"><span class="zoom">🔎</span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -327,9 +357,6 @@
     const firebaseConfig = {
       apiKey: "AIzaSyAup5K7Nz87e5Iukut1PudHn2wV1bc5690",
       authDomain: "landspice.firebaseapp.com",
-      projectId: "landspice-d9db5",
-      storageBucket: "landspice-d9db5.firebasestorage.app",
-      messagingSenderId: "1026404822173",
       appId: "1:1026404822173:web:62f639fc418afb1905f874",
       measurementId: "G-K9J2THRERY"
     };
