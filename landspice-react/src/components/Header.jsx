@@ -323,7 +323,7 @@ export default function Header() {
 
               {/* Theme toggle */}
               <div className={`flex ${expanded ? 'justify-start' : 'justify-center'}`}>
-                <ThemeToggle showText={true} />
+                <ThemeToggle showText={false} />
               </div>
             </div>
           </div>
@@ -567,7 +567,7 @@ export default function Header() {
 
             {/* Theme toggle */}
             <div className={`flex ${expanded ? 'justify-start' : 'justify-center'}`}>
-              <ThemeToggle showText={true} />
+              <ThemeToggle showText={false} />
             </div>
           </div>
         </div>

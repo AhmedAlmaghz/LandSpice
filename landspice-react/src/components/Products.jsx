@@ -5,14 +5,17 @@ import { useTranslation } from 'react-i18next';
 const products = [
   {
     id: 1,
-    name: 'صوص حار',
+    name: 'الشطة الحارة',
     nameEn: 'Hot Sauce',
     image: '/img/Product/hotSauce.jpg',
     fallback: '/img/Product/old/chili.svg',
-    description: 'صوص يمني حار بنكهة فريدة',
+    description: 'شطة يمنية حارة بنكهة فريدة',
     descriptionEn: 'Spicy Yemeni hot sauce with unique flavor',
     category: 'sauces',
-    tags: ['spicy', 'bestseller']
+    tags: ['spicy', 'bestseller'],
+    price: 299,
+    
+
   },
   {
     id: 2,
@@ -23,7 +26,9 @@ const products = [
     description: 'كاتشب طبيعي مصنوع من الطماطم الطازجة',
     descriptionEn: 'Natural ketchup made from fresh tomatoes',
     category: 'sauces',
-    tags: ['sweet', 'family']
+    tags: ['sweet', 'family'],
+    price: 349,
+    
   },
   {
     id: 3,
@@ -31,29 +36,33 @@ const products = [
     nameEn: 'Tomato Powder',
     image: '/img/Product/TomatoPowder.jpg',
     fallback: '/img/Product/old/tomato-powder.svg',
-    description: 'بودرة طماطم طبيعية 100%',
+    description: 'بودرة طماطم مجففة طبيعية 100%',
     descriptionEn: '100% natural tomato powder',
     category: 'spices',
-    tags: ['natural', 'versatile']
+    tags: ['natural', 'versatile'],
+    price: 999,
+    
   },
   {
     id: 4,
-    name: 'بسباس',
+    name: 'بسباس مبهر',
     nameEn: 'Basbas',
     image: '/img/Product/pasbas.jpg',
     fallback: '/img/Product/old/basbas.svg',
-    description: 'بسباس يمني تقليدي',
+    description: 'مسحوق البسباس اليمني العريق مع خلطة التوابل المغذية واللذيذة',
     descriptionEn: 'Traditional Yemeni basbas',
     category: 'spices',
-    tags: ['traditional', 'aromatic']
+    tags: ['traditional', 'aromatic'],
+    price: 649,
+    
   }
 ];
 
 const categories = [
   { id: 'all', name: 'الكل', nameEn: 'All' },
-  { id: 'sauces', name: 'الصلصات', nameEn: 'Sauces' },
-  { id: 'spices', name: 'بهارات', nameEn: 'Spices' },
-  { id: 'herbs', name: 'أعشاب', nameEn: 'Herbs' }
+  { id: 'sauces', name: 'الشطة', nameEn: 'Sauces' },
+  { id: 'spices', name: 'الصلصة', nameEn: 'Spices' },
+  { id: 'herbs', name: 'الأعشاب', nameEn: 'Herbs' }
 ];
 
 export default function Products() {
@@ -175,7 +184,7 @@ export default function Products() {
                       {t('products.view_details', 'عرض التفاصيل')}
                     </button>
                     <span className="text-lg font-bold text-gray-900 dark:text-white">
-                      {t('products.price', 'ريال')} 15.99
+                      {t('products.price', 'ريال')} {product.price}
                     </span>
                   </div>
                 </div>
