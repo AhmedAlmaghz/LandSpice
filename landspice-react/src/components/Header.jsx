@@ -330,7 +330,7 @@ export default function Header() {
           {/* Mobile menu trigger (floating) and overlay */}
           {/* Floating button visible only on small screens */}
           <button
-            className={`md:hidden fixed bottom-3 top-3 ${isAr ? 'right-3':'left-3' } z-50 w-12 h-10 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600/60`}
+            className={`md:hidden fixed ${isAr ? 'right-3' : 'left-3'} top-3 z-50 w-12 h-10 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600/60`}
             onClick={() => setMobileMenuOpen((o) => !o)}
             onMouseEnter={() => setMobileMenuOpen(true)}
             onTouchStart={(e) => { e.preventDefault(); setMobileMenuOpen(true) }}
