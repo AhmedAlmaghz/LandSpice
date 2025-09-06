@@ -7,17 +7,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies and build
+        working-directory: ./landspice-react
         run: |
           npm ci
-          npm run build  # This already outputs to dist/
+          npm run build
           # Verify the dist directory exists
           ls -la dist/
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy to Firebase
+        working-directory: ./landspice-react
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LANDSPICE }}'
           channelId: 'pr-${{ github.event.pull_request.number }}'
-          projectId: 'landspice-d9db5'  # Replace with your Firebase project ID
+          projectId: 'landspice-d9db5'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
 
@@ -34,15 +37,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies and build
+        working-directory: ./landspice-react
         run: |
           npm ci
-          npm run build  # This already outputs to dist/
+          npm run build
           # Verify the dist directory exists
           ls -la dist/
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy to Firebase
+        working-directory: ./landspice-react
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LANDSPICE }}'
           channelId: live
-          projectId: 'landspice-d9db5'  # Replace with your Firebase project ID
+          projectId: 'landspice-d9db5'
           site: 'landspice'
