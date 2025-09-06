@@ -1,7 +1,6 @@
 {
   "hosting": {
     "public": "dist",
-    "site": "landspice",
     "ignore": [
       "firebase.json",
       "**/.*",
