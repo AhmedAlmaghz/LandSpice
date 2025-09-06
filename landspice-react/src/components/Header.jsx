@@ -168,7 +168,7 @@ export default function Header() {
               {/* Pin toggle */}
               <button
                 onClick={() => setIsPinned((p) => !p)}
-                className={`relative flex items-center gap-2 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'} ${isPinned ? 'text-red-700 ring-2 ring-red-600/40' : 'text-[var(--fg)]'}`}
+                className={`relative flex items-center gap-2 overflow-hidden rounded-full border-0 border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'} ${isPinned ? 'text-red-700 ring-2 ring-red-600/40' : 'text-[var(--fg)]'}`}
                 aria-pressed={isPinned}
                 title={isPinned ? (isAr ? 'إلغاء التثبيت' : 'Unpin') : (isAr ? 'تثبيت' : 'Pin')}
               >
@@ -309,7 +309,7 @@ export default function Header() {
               {/* Language toggle */}
               <button
                 onClick={toggle}
-                className={`flex items-center gap-2 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] text-sm font-medium transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'}`}
+                className={`flex items-center gap-2 overflow-hidden rounded-full border-0 border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] text-sm font-medium transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'}`}
                 aria-label={isAr ? 'Switch to English' : 'التبديل إلى العربية'}
                 title={isAr ? 'English' : 'عربي'}
               >
@@ -412,7 +412,7 @@ export default function Header() {
             {/* Pin toggle */}
             <button
               onClick={() => setIsPinned((p) => !p)}
-              className={`relative flex items-center gap-2 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'} ${isPinned ? 'text-red-700 ring-2 ring-red-600/40' : 'text-[var(--fg)]'}`}
+              className={`relative flex items-center gap-2 overflow-hidden rounded-full border-0 border-[var(--border)] bg-[var(--surface-solid)] hover:bg-[var(--surface-hover)] transition-colors ${expanded ? 'justify-start px-2 py-1' : 'justify-center p-1'} ${isPinned ? 'text-red-700 ring-2 ring-red-600/40' : 'text-[var(--fg)]'}`}
               aria-pressed={isPinned}
               title={isPinned ? (isAr ? 'إلغاء التثبيت' : 'Unpin') : (isAr ? 'تثبيت' : 'Pin')}
             >
@@ -557,7 +557,7 @@ export default function Header() {
               aria-label={isAr ? 'Switch to English' : 'التبديل إلى العربية'}
               title={isAr ? 'English' : 'عربي'}
             >
-              <span className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-[var(--border)]">
+              <span className="w-9 h-9 inline-flex items-center justify-center rounded-full border-0 border-[var(--border)]">
                 {isAr ? 'EN' : 'ع'}
               </span>
               <span className={`text-sm whitespace-nowrap transition-all ${expanded ? 'opacity-100 w-auto pr-1' : 'opacity-0 w-0 pr-0'}`} aria-hidden={!expanded}>
