@@ -63,7 +63,7 @@ export default function Header() {
 
   const expanded = isPinned || isHovering
   return (
-    <header className="sticky top-0 z-10 bg-[var(--surface-solid)] backdrop-blur border-b border-[var(--border)] text-[var(--fg)]">
+    <header className="fixed top-0 left-0 right-0 z-40 w-full bg-[var(--surface-solid)] backdrop-blur border-b border-[var(--border)] text-[var(--fg)]">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-center md:justify-between">
         <Link to="/" className="font-extrabold mx-auto md:mx-0"><img src="/logo.png" alt="LandSpice Logo" className="h-10 w-auto max-w-full object-contain drop-shadow" loading="eager" decoding="async" fetchpriority="high" /></Link>
         <nav className="hidden md:flex items-center gap-3 sm:gap-4">

@@ -32,7 +32,7 @@ const TrackPageViews = () => {
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[var(--bg)] text-[var(--fg)]">
+      <div className="min-h-screen bg-[var(--bg)] text-[var(--fg)] pt-14">
         <TrackPageViews />
         <ScrollToTop />
         <Helmet>

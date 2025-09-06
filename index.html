@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#dc2626" />
-    <link rel="icon" href="/logo.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <script>
       (()=>{
         try {
-          const pref = localStorage.getItem('theme') || 'system';
+          const pref = localStorage.getItem('theme') || 'dark';
           const mq = window.matchMedia('(prefers-color-scheme: dark)');
-          const dark = pref === 'dark' || (pref === 'system' && mq.matches);
+          const dark = pref === 'dark' || (pref === 'dark' && mq.matches);
           const root = document.documentElement;
           root.classList.toggle('dark', dark);
           root.setAttribute('data-theme', dark ? 'dark' : 'light');
