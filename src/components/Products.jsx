@@ -7,7 +7,7 @@ const products = [
     id: 1,
     name: 'الشطة الحارة',
     nameEn: 'Hot Sauce',
-    image: '/img/Product/hotSauce10.jpg',
+    image: '/img/Product/HotSauce200.png',
     fallback: '/img/Product/old/chili.svg',
     description: 'شطة يمنية حارة بنكهة فريدة',
     descriptionEn: 'Spicy Yemeni hot sauce with unique flavor',
@@ -18,8 +18,22 @@ const products = [
 
   },
   {
-    id: 2,
-    name: 'كاتشب',
+    id: 1,
+    name: 'الشطة الحارة 10جم',
+    nameEn: 'Hot Sauce',
+    image: '/img/Product/hotSauce10.png',
+    fallback: '/img/Product/old/chili.svg',
+    description: 'شطة يمنية حارة بنكهة فريدة',
+    descriptionEn: 'Spicy Yemeni hot sauce with unique flavor',
+    category: 'sauces',
+    tags: ['spicy', 'bestseller'],
+    price: 19,
+    
+
+  },
+  {
+    id: 3,
+    name: 'كاتشب 10جم',
     nameEn: 'Ketchup',
     image: '/img/Product/Ketchup.png',
     fallback: '/img/Product/old/ketchup.svg',
@@ -27,14 +41,14 @@ const products = [
     descriptionEn: 'Natural ketchup made from fresh tomatoes',
     category: 'sauces',
     tags: ['sweet', 'family'],
-    price: 349,
+    price: 19,
     
   },
   {
-    id: 3,
+    id: 4,
     name: 'بودرة الطماطم',
     nameEn: 'Tomato Powder',
-    image: '/img/Product/Tomato1.jpg',
+    image: '/img/Product/TomatoPowder.jpg',
     fallback: '/img/Product/old/tomato-powder.svg',
     description: 'بودرة طماطم مجففة طبيعية 100%',
     descriptionEn: '100% natural tomato powder',
@@ -44,7 +58,20 @@ const products = [
     
   },
   {
-    id: 4,
+    id: 5,
+    name: 'معجون الطماطم',
+    nameEn: 'Tomato Powder',
+    image: '/img/Product/Tomato1.png',
+    fallback: '/img/Product/old/tomato-powder.svg',
+    description: 'معجون الطماطم المركزة 22%',
+    descriptionEn: '22% natural tomato ',
+    category: 'spices',
+    tags: ['natural', 'versatile'],
+    price: 99,
+    
+  },
+  {
+    id: 6,
     name: 'بسباس مبهر',
     nameEn: 'Basbas',
     image: '/img/Product/pasbas.jpg',
