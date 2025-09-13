@@ -35,7 +35,7 @@ const products = [
     id: 3,
     name: 'كاتشب 10جم',
     nameEn: 'Ketchup',
-    image: '/img/Product/Ketchup.png',
+    image: '/img/Product/Ketchup10.png',
     fallback: '/img/Product/old/ketchup.svg',
     description: 'كاتشب طبيعي مصنوع من الطماطم الطازجة',
     descriptionEn: 'Natural ketchup made from fresh tomatoes',
